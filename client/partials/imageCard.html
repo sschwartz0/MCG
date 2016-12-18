@@ -1,0 +1,59 @@
+<h1>Image Card</h1>
+<a ng-href="#/">Home</a> <br />
+
+<!--CONFIGURATOR AND CODE GRABBER-->
+<div class="configContainer">
+    <div class="config">
+        <form ng-submit="save(width,height)">
+            <select ng-model="cardType">
+                <option value="" disabled selected>Select Card</option>
+                <option value="simpleCard">Simple Card</option>
+                <option value="imageCard">imageCard</option>
+            </select>
+            <label>Card Title: <input id="title" type="text" placeholder='Card Title' ng-init="title='Card Title'" ng-model='title'></label>            
+            <label>Image: <input id="titleImage" type="text" placeholder='Card Title' ng-init="titleImage='http://materializecss.com/images/sample-1.jpg'" ng-model='titleImage'></label>
+            <label>Width: <input id="width" type="number" min="50" max="1200" step="10" ng-init="width=500" ng-model='width'></label>
+            <label>Height: <input id="height" type="number" min="50" max="1200" step="10" ng-init="height=300" ng-model='height'></label>
+            <label>Content Background Color: <input id="contentBg" type="text" ng-init="contentBg='#2196F3'" ng-model='contentBg'></label>
+            <label>Footer Background Color: <input id="footerBg" type="text" ng-init="footerBg='#000'" ng-model='footerBg'></label>
+            <label>Text Color: <input id="textcolor" type="text" ng-init="textcolor='#000000'" ng-model='textcolor'></label>
+
+            <button type="submit">Save</button>
+        </form>
+    </div>
+
+    <div class="code-grabber">
+        <textarea rows="10" cols="20">
+            <div class="card" style="width: {{width}}px; height: {{height}}px; background-color: {{footerBg}}; color: {{textcolor}}; box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);">
+                <div class="card-image">
+                    <img src="{{titleImage}}">
+                    <span class="card-title">{{title}}</span>
+                </div>
+                <div class="card-content" style="background-color: {{contentBg}}">
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action">
+                    a href="#">This is a link</a>
+                </div>
+            </div>
+        </textarea>
+    </div>
+</div>
+
+<!--DYNAMIC CARD-->
+<div class="cardContainer">
+    <div class="card" style="width: {{width}}px; height: {{height}}px; background-color: {{footerBg}}; color: {{textcolor}}; box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);">
+        <div class="card-image">
+            <img src="{{titleImage}}">
+            <span class="card-title">{{title}}</span>
+        </div>
+        <div class="card-content" style="background-color: {{contentBg}}">
+            <p>I am a very simple card. I am good at containing small bits of information.
+            I am convenient because I require little markup to use effectively.</p>
+        </div>
+        <div class="card-action">
+            <a href="#">This is a link</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<h1>Material Design Card</h1>
+<a ng-href="#/">Home</a> <br />
+
+
+
+<form ng-submit="save(width,height)">
+    <select ng-model="cardType">
+        <option value="" disabled selected>Select Card</option>
+        <option value="simpleCard">Simple Card</option>
+        <option value="imageCard">imageCard</option>
+    </select>
+  <input id="title" type="text" placeholder='Card Title' ng-init="title='Test'" ng-model='title'></input>
+  <input id="width" type="number" min="50" max="1200" step="10" ng-init="width=300" ng-model='width'></input>
+  <input id="height" type="number" min="50" max="1200" step="10" ng-init="height=300" ng-model='height'></input>
+  <input id="bgcolor" type="text" ng-init="bgcolor='#2196F3'" ng-model='bgcolor'></input>
+  <input id="textcolor" type="text" ng-init="textcolor='#000000'" ng-model='textcolor'></input>
+
+<button type="submit">Save</button>
+
+</form>
+
+          <div class="card" style="width: {{width}}px; height: {{height}}px; background-color: {{bgcolor}}; color: {{textcolor}}">
+            <div class="card-content">
+              <span class="card-title">{{title}}</span>
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+
+<div class="code-grabber">
+    <textarea rows="10" cols="20"><div class="card" style="width: {{width}}px; height: {{height}}px; background-color: {{bgcolor}}; color: {{textcolor}}">
+            <div class="card-content">
+              <span class="card-title">{{title}}</span>
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+              <a href="#">This is a link</a>
+            </div>
+          </div></textarea>
+</div>
+
+<div>
+
+</div>
