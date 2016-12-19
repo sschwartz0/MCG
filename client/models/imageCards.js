@@ -3,7 +3,7 @@ var sequelize = new Sequelize('postgres://postgres:PASSWORD@localhost:5432/mcg')
 
 
 const save = function(username, title, titleImage, width, height, contentBg, footerBg, textcolor) {
-				var imageCard = sequelize.define('imageCards', {
+			var imageCard = sequelize.define('imageCards', {
             _id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true},
             username: Sequelize.STRING,
             titleImage: Sequelize.STRING,

@@ -1,111 +1,52 @@
-<h1>Image Card</h1>
-<a ng-href="#/">Home</a> <br />
-
-<!--CONFIGURATOR AND CODE GRABBER-->
-<div class="configContainer">
-    <div class="config">
-        <form ng-submit="save(title, titleImage, width, height, contentBg, footerBg, textcolor)">
-        <div class="row">
-            <div class="input-field col s6">
-                <input id="title" type="text" placeholder='Card Title' ng-init="title='Card Title'" ng-model='title'><label class="active" for='title'>Card Title: </label>
-            </div>    
-            <div class="input-field col s6">    
-                <input id="titleImage" type="text" placeholder='Card Title' ng-init="titleImage='./assets/welcome_card.jpg'" ng-model='titleImage'><label class="active" for='image'>Image: </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s6">
-                <input id="width" type="number" min="50" max="1200" step="10" ng-model='width' ng-init='width=500'><label class="active" for='width'>Width: </label>
-            </div>
-            <div class="input-field col s6">
-                <input id="height" type="number" min="50" max="1200" step="10" ng-init="height=173" ng-model='height'><label class="active" for='height'>Image Height: </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s6">
-                <input id="contentBg" type="text" ng-init="contentBg='#2196F3'" ng-model='contentBg'><label class="active" for='contentBg'>Content Background Color: </label>
-            </div>
-            <div class="input-field col s6">
-                <input id="footerBg" type="text" ng-init="footerBg='#FFFFFF'" ng-model='footerBg'><label class="active" for='footerBg'>Footer Background Color: </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s6">
-                <input id="textcolor" type="text" ng-model='textcolor'><label class="active" for='textcolor'>Text Color: </label>
-            </div>
-        </div>
-
-<button type='submit' class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>button</a>
-        </form>
-    </div>
-
-    <div class="code-grabber">
-        <textarea rows="10" cols="20" class="text-area">
-            <style>
-            .demo-card-wide.mdl-card {
-            width: {{width}}px;
-            }
-            .demo-card-wide > .mdl-card__title {
-            color: #fff;
-            height: {{height}}px;
-            background: url('{{titleImage}}') center / cover;
-            }
-            .demo-card-wide > .mdl-card__menu {
-            color: #fff;
-            }
-            </style>
-
-            <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">{{title}}</h2>
-            </div>
-            <div class="mdl-card__supporting-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Mauris sagittis pellentesque lacus eleifend lacinia...
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                Get Started
-                </a>
-            </div>
-            <div class="mdl-card__menu">
-                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                <i class="material-icons">share</i>
-                </button>
-            </div>
-            </div>
-        </textarea>
-    </div>
+<div class='row'>
+    <div class="col s6 left">
+        <h2>MCG: Image Card</h2>   
+    </div>  
+    <div class="col s6">
+        <h2>selector</h2>   
+    </div>   
 </div>
+
+
 
 <!--DYNAMIC CARD-->
 <div class="cardWrapper">
     <style>
+
     .demo-card-wide.mdl-card {
-    width: {{width}}px;
-    background-color: {{contentBg}}
-    }
-    .demo-card-wide > .mdl-card__title {
-    color: #fff;
-    height: {{height}}px;
-    background: url('{{titleImage}}') center / cover;
-    }
-    .demo-card-wide > .mdl-card__menu {
-    color: #fff;
+        width: {{data.width}}px;
+        background-color: {{data.contentBg}};
     }
 
-    .demo-card-wide > .mdl-card__actions {
-    background-color: {{footerBg}}
+    .demo-card-wide > .mdl-card__title {
+        color: {{data.titletextcolor}};
+        height: {{data.height}}px;
+        background: url('{{data.titleImage}}') center / cover;
+    }
+
+    .demo-card-wide > .mdl-card__menu {
+        color: #FFFFFFf;
+    }
+
+    .mdl-card__supporting-text {
+        color: {{data.textcolor}};
+    }
+
+    .mdl-card__actions {
+        background-color: {{data.footerBg}};
+   }
+
+    .mdl-button.mdl-button--colored {
+        color: {{data.footertextcolor}};
     }
     </style>
 
     <div class="demo-card-wide mdl-card mdl-shadow--2dp">
         <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text">{{title}}</h2>
+            <h2 class="mdl-card__title-text">{{data.title}}</h2>
         </div>
         <div class="mdl-card__supporting-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Mauris sagittis pellentesque lacus eleifend lacinia...
+            {{ipsumText}}
         </div>
         <div class="mdl-card__actions mdl-card--border">
             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
@@ -119,6 +60,110 @@
         </div>
     </div>
 </div>
+
+<!-- CONFIGURATOR -->
+
+<div class="row configContainer">
+    <div class="config col s6">
+        <form ng-submit="sumit(title, titleImage, width, height, contentBg, footerBg, textcolor)">
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="title" type="text" placeholder='Card Title' ng-init="data.title='Card Title'" ng-model='data.title'><label class="active" for='data.title'>Card Title: </label>
+            </div>    
+            <div class="input-field col s6">    
+                <input id="titleImage" type="text" placeholder='Card Title' ng-init="data.titleImage='./assets/welcome_card.jpg'" ng-model='data.titleImage'><label class="active" for='image'>Image: </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="width" type="number" min="300" max="1200" step="10" ng-model='data.width' ng-init='data.width=500'><label class="active" for='width'>Width (px, min: 300): </label>
+            </div>
+            <div class="input-field col s6">
+                <input id="height" type="number" min="50" max="1200" step="10" ng-init="data.height=170" ng-model='data.height'><label class="active" for='height'>Image Height (px, min: 50): </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="contentBg" class='colorPicker' type="color" ng-init="data.contentBg='#2196F3'" ng-model='data.contentBg'><label class="active" for='contentBg'>Content Background Color: </label>
+            </div>
+            <div class="input-field col s6">
+                <input id="footerBg" class='colorPicker' type="color" ng-init="data.footerBg='#FFFFFF'" ng-model='data.footerBg'><label class="active" for='footerBg'>Footer Background Color: </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="textcolor" class='colorPicker' type="color" ng-init="data.textcolor='#FFFFFF'" ng-model='data.textcolor'><label class="active" for='textcolor'>Main Text Color: </label>
+            </div>
+            <div class="input-field col s6">
+                <input id="footertextcolor" class='colorPicker' type="color" ng-init="data.footertextcolor='#3f51b5'" ng-model='footertextcolor'><label class="active" for='data.footertextcolor'> Footer Text Color: </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="titletextcolor" class='colorPicker' type="color" ng-init="data.titletextcolor='#FFFFFF'" ng-model='data.titletextcolor'><label class="active" for='titletextcolor'>Title Text Color: </label>
+            </div>
+        </div>
+
+<button ng-click='ipsum()' class="waves-effect waves-light btn"><i class="material-icons right">add</i>Add more ipsum</a></button>
+<button type='submit' ng-click='submit()' class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Save to account</a></button>
+  </form>      
+    </div>
+
+    <div class="code-grabber col s6">
+        <textarea rows="10" cols="20" class="text-area">
+            <style>
+
+            .demo-card-wide.mdl-card {
+                width: {{data.width}}px;
+                background-color: {{data.contentBg}};
+            }
+
+            .demo-card-wide > .mdl-card__title {
+                color: {{data.titletextcolor}};
+                height: {{data.height}}px;
+                background: url('{{data.titleImage}}') center / cover;
+            }
+
+            .demo-card-wide > .mdl-card__menu {
+                color: #FFFFFF;
+            }
+
+            .mdl-card__supporting-text {
+                color: {{data.textcolor}};
+            }
+
+            .mdl-card__actions {
+                background-color: {{data.footerBg}};
+           }
+
+            .mdl-button.mdl-button--colored {
+                color: {{data.footertextcolor}};
+            }
+            </style>
+
+            <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">{{title}}</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Mauris sagittis pellentesque lacus eleifend lacinia...
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    Get Started
+                    </a>
+                </div>
+                <div class="mdl-card__menu">
+                    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                    <i class="material-icons">share</i>
+                    </button>
+                </div>
+            </div>
+        </textarea>
+    </div>
+</div>
+
 
 
 
