@@ -1,7 +1,7 @@
 const app = angular
   .module('myApp', [
     'ngRoute',
-    'Codesmith.HomeController','Codesmith.AboutController','Codesmith.CardsController','Codesmith.ImageCardController']);
+    'Codesmith.HomeController', 'Codesmith.CardsController','Codesmith.ImageCardController']);
    
 
 app.config(configFunction);
@@ -20,10 +20,6 @@ function configFunction($routeProvider, $locationProvider) {
     .when('/imageCard', {
       templateUrl: './partials/imageCard.html',
       controller: 'ImageCardController'
-    })
-    .when('/about',{
-    	templateUrl: './partials/about.html',
-    	controller: 'AboutController'
     });
 }
 

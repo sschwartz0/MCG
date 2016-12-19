@@ -11,7 +11,7 @@ header {
 
 .container {
   background-color: #dbdbdb;
-  text-align: center;
+  text-align: left;
   display: flex;
   flex-direction: column;
 }
@@ -87,4 +87,13 @@ header {
 .cardContainer {
   margin: 0 auto;
   display: flex;
+}
+
+.text-area {
+  height: 400px;
+}
+
+.cardWrapper {
+  margin: 0 auto;
+  padding-bottom:30px;
 }

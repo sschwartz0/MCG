@@ -3,28 +3,7 @@
 	<a ng-href="#/about">About</a>
 </header>
 
-<div id="form">
-	<form ng-submit='postSave(name, message)'>
-		<input type="text" ng-model='name'></input>
-		<input type="text" ng-model='message'></input>
-		<button type="submit">Submit</button>
-	</form>
-</div>
-
-<div id="filter">
-	<input type="text" ng-model="test" placeholder="Search for a message" />
-	<select ng-model="orderList">
-	 <option value="" disabled selected>Sort By</option>
-	 <option value="created_by">Name A-Z</option>
-	 <option value="-created_by">Name Z-A</option>
-	 <option value="-created_at">Newest</option>
-	 <option value="created_at">Oldest</option>
- </select>
-</div>
-
-<br /><br />
-<div id="chatContainer">
-	<ul id="chatList">
-		<li class="chatItem" ng-repeat='item in messages | orderBy : orderList | filter : test'><span class="name">{{item.created_by}}:</span> <span class="message">{{item.message}}</span></li>
-	</ul>
+<div>
+<a href="#/simpleCard">simpleCard</a><br />
+<a href="#/imageCard">imageCard</a><br />
 </div>

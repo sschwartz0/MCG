@@ -1,17 +1,8 @@
-/**
- * AboutController goes here
- */
+var Sequelize = require('sequelize');
+var sequelize = new Sequelize('postgres://postgres:PASSWORD@localhost:5432/mcg');
 
 
-angular
-  .module('Codesmith.ImageCardController', ['ngRoute', 'Codesmith.ImageCardFactory'])
-  .controller('ImageCardController', ImageCardController);
- 
-
-
-function ImageCardController($scope, ImageCardFactory) {
-
-	$scope.save = function(username, title, titleImage, width, height, contentBg, footerBg, textcolor) {
+const save = function(username, title, titleImage, width, height, contentBg, footerBg, textcolor) {
 				var imageCard = sequelize.define('imageCards', {
             _id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true},
             username: Sequelize.STRING,
@@ -38,14 +29,3 @@ function ImageCardController($scope, ImageCardFactory) {
         	});
         });
 	}
-}
-
-
-// mainApp.service('CalcService', function(MathService){
-//    this.square = function(a) {
-//       return MathService.multiply(a,a);
-//    }
-// });
-
-
-
