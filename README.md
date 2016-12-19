@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Angular
 
 ## Summary
@@ -114,3 +115,7 @@ Write a JS file with a new Angular module that contains an **element directive**
 - [https://docs.angularjs.org/guide/concepts](https://docs.angularjs.org/guide/concepts)
 - [https://docs.angularjs.org/guide/controller](https://docs.angularjs.org/guide/controller)
 - [https://docs.angularjs.org/guide/providers](https://docs.angularjs.org/guide/providers)
+
+# MCG
+Material Component Generator
+
