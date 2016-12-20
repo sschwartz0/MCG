@@ -1,23 +1,13 @@
-/**
- * AboutController goes here
- */
-
-
-
 angular
-  .module('Codesmith.CardsController', ['ngRoute', 'Codesmith.CardsFactory'])
+  .module('Codesmith.CardsController', ['ngRoute'])
   .controller('CardsController', CardsController);
- 
 
 
-function CardsController($scope, CardsFactory) {
+
+function CardsController($scope) {
 
 	$scope.save = function(width,height,title) {
-		CardsFactory.cardType = cardType;
-		CardsFactory.simpleCard = simpleCard;
-		CardsFactory.width = width;
-		CardsFactory.height = height;
-		CardsFactory.title = title;
+
 	}
 }
 
@@ -27,6 +17,3 @@ function CardsController($scope, CardsFactory) {
 //       return MathService.multiply(a,a);
 //    }
 // });
-
-
-

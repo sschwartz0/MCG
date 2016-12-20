@@ -65,7 +65,7 @@
 
 <div class="row configContainer">
     <div class="config col s6">
-        <form ng-submit="sumit(title, titleImage, width, height, contentBg, footerBg, textcolor)">
+        <form>
         <div class="row">
             <div class="input-field col s6">
                 <input id="title" type="text" placeholder='Card Title' ng-init="data.title='Card Title'" ng-model='data.title'><label class="active" for='data.title'>Card Title: </label>
@@ -95,7 +95,7 @@
                 <input id="textcolor" class='colorPicker' type="color" ng-init="data.textcolor='#FFFFFF'" ng-model='data.textcolor'><label class="active" for='textcolor'>Main Text Color: </label>
             </div>
             <div class="input-field col s6">
-                <input id="footertextcolor" class='colorPicker' type="color" ng-init="data.footertextcolor='#3f51b5'" ng-model='footertextcolor'><label class="active" for='data.footertextcolor'> Footer Text Color: </label>
+                <input id="footertextcolor" class='colorPicker' type="color" ng-init="data.footertextcolor='#3f51b5'" ng-model='data.footertextcolor'><label class="active" for='data.footertextcolor'> Footer Text Color: </label>
             </div>
         </div>
         <div class="row">
@@ -105,7 +105,7 @@
         </div>
 
 <button ng-click='ipsum()' class="waves-effect waves-light btn"><i class="material-icons right">add</i>Add more ipsum</a></button>
-<button type='submit' ng-click='submit()' class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Save to account</a></button>
+<button type='submit' ng-click='submit(data.title, data.titleImage, data.width, data.height, data.contentBg, data.footerBg, data.textcolor, data.footertextcolor, data.titletextcolor)' class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Save to account</a></button>
   </form>      
     </div>
 

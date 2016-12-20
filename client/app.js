@@ -3,8 +3,8 @@
 const app = angular
   .module('myApp', [
     'ngRoute',
-    'Codesmith.HomeController', 'Codesmith.CardsController','Codesmith.ImageCardController']);
-   
+    'Codesmith.HomeController', 'Codesmith.CardsController','Codesmith.ImageCardController','Codesmith.SavedController']);
+
 
 app.config(configFunction);
 
@@ -22,6 +22,12 @@ function configFunction($routeProvider, $locationProvider) {
     .when('/imageCard', {
       templateUrl: './partials/imageCard.html',
       controller: 'ImageCardController'
+    })
+    .when('/saved', {
+      templateUrl: './partials/saved.html',
+      controller: 'HomeController'
     });
-}
 
+    $locationProvider.html5Mode(true);
+
+}

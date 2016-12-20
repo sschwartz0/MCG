@@ -1,9 +1,22 @@
-<header>
-	<h1>SPA Angular Chat</h1>
-	<a ng-href="#/about">About</a>
-</header>
 
-<div>
-<a href="#/simpleCard">simpleCard</a><br />
-<a href="#/imageCard">imageCard</a><br />
-</div>
+<form style="margin-top: 70px;">
+	<div class="row">
+			<div class="input-field col s4">
+					<input id="username" type="text" placeholder='Username' ng-model='data.username'><label class="active" for='username'>username: </label>
+			</div>
+			<div class="input-field col s4">
+					<input id="password" type="password" placeholder='Password' ng-model='data.password'><label class="active" for='password'>Password: </label>
+			</div>
+			<div class="col s4">
+				<form action="/login" method="post"><button type='submit' ng-click='login(data.username, data.password)' class="waves-effect waves-light btn"><i class="material-icons right">star</i>Login</a></button></form>
+				<button type='submit' ng-click='register(data.username, data.password)' class="waves-effect waves-light btn"><i class="material-icons right">save</i>Register</a></button>
+			</div>
+	</div>
+</form>
+<br /><br />
+<a ng-click='fetch()'>Get cards</a>
+<ul ng-repeat="card in cards">
+  <li ng-repeat="(key, val) in card">
+    {{key}}: {{val}}
+  </li>
+</ul>
