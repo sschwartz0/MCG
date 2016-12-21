@@ -1,25 +1,25 @@
 <div class='row'>
     <div class="col s12 center">
-        <h3>Material Simple Card</h3>
+        <h3>Material Horizontal Floating Action Button</h3>
     </div>
 </div>
 
 
-
-<!--DYNAMIC CARD-->
+<!--DYNAMIC HORIZONTAL FAB-->
 <div class="cardWrapper">
-    <div class="card" style="width: {{data.width}}px;">
-      <div class="card-content" style="background-color: {{data.contentBg}}; color: {{data.textcolor}}">
-        <span class="card-title" style="color:{{data.titleColor}}">{{data.title}}</span>
-        <p>
-          {{loremIpsum}}
-        </p>
-      </div>
-      <div class="card-action" style="background-color: {{data.footerBg}}; color: {{data.footerColor}}">
-        <a href="#">This is a link</a>
-        <a href="#">This is a link</a>
-      </div>
+
+  <div class="horizontal click-to-toggle">
+      <a class="btn-floating btn-large red">
+        <i class="material-icons">menu</i>
+      </a>
+      <ul>
+        <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+        <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+        <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+        <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+      </ul>
     </div>
+
 </div>
 
 <!-- CONFIGURATOR -->
@@ -60,12 +60,13 @@
     </div>
     <div class="code-grabber col s6">
           <textarea rows="10" cols="20" class="text-area">
-<div class="card" style="width: {{data.width}}px; background-color: {{data.contentBg}}; color: {{data.textcolor}}">
+<div class="card" style="width: {{width}}px; background-color: {{contentBg}}; color: {{textcolor}}">
   <div class="card-content">
-    <span class="card-title">{{data.title}}</span>
-    <p>{{loremIpsum}}</p>
+    <span class="card-title">{{title}}</span>
+    <p>I am a very simple card. I am good at containing small bits of information.
+    I am convenient because I require little markup to use effectively.</p>
   </div>
-  <div class="card-action" style="{{data.footerBg}}">
+  <div class="card-action" style="{{footerBg}}">
     <a href="#">This is a link</a>
     <a href="#">This is a link</a>
   </div>
@@ -73,14 +74,6 @@
           </textarea>
     </div>
 </div>
-
-
-
-
-
-
-
-
 
 <div>
 

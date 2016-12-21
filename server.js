@@ -25,9 +25,6 @@ app.use(express.static(path.join(__dirname, './node_modules/')));
 app.use(express.static(path.join(__dirname, './client/')));
 
 //HTTP REQUEST ROUTES/ACTIONS
-app.post('/postImageCard', function(req, res, next){
-  Models.imageCard(req, res, next);
-});
 
 app.post('/register', function(req, res, next){
   Models.register(req, res, next);
@@ -37,8 +34,24 @@ app.post('/login', function(req, res, next){
     Models.login(req, res, next);
 });
 
-app.get('/getComponents', function(req, res, next){
-    Models.getComponents(req, res, next);
+app.post('/postImageCard', function(req, res, next){
+  Models.imageCard(req, res, next);
+});
+
+app.post('/postSimpleCard', function(req, res, next){
+  Models.simpleCard(req, res, next);
+});
+
+app.post('/postHorizontalFab', function(req, res, next){
+  Models.horizontalFab(req, res, next);
+});
+
+app.get('/getImageCards', function(req, res, next){
+    Models.getImageCards(req, res, next);
+});
+
+app.get('/getSimpleCards', function(req, res, next){
+    Models.getSimpleCards(req, res, next);
 });
 
 app.listen(3000, () => {

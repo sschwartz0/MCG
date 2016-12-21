@@ -1,19 +1,19 @@
 angular
-  .module('Codesmith.ImageCardController', ['ngRoute'])
-  .controller('ImageCardController', ImageCardController);
+  .module('Codesmith.SimpleCardController', ['ngRoute'])
+  .controller('SimpleCardController', SimpleCardController);
 
 
 
-function ImageCardController($scope, $http) {
+function SimpleCardController($scope, $http) {
     $scope.loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...';
-    $scope.ipsum = function() {
+    $scope.simpleCardIpsum = function() {
         this.loremIpsum = this.loremIpsum.concat(this.loremIpsum);
     }
     $scope.data = {};
-    $scope.imageCardSubmit= function(){
+    $scope.simpleCardSubmit= function(){
         console.log('clicked submit');
         $http({
-            url: 'http://localhost:3000/postImageCard',
+            url: 'http://localhost:3000/postSimpleCard',
             method: 'POST',
             data: $scope.data
         }).then(function (httpResponse) {

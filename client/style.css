@@ -1,5 +1,13 @@
+
 body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
   background-color: #dbdbdb:
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 header {
@@ -26,6 +34,16 @@ header {
 
 .code-grabber {
   height:500px;
+}
+
+.text-area {
+  background-color: #FFF;
+}
+
+.code-grabber1 {
+  margin-top:15px;
+  height:500px;
+  width: 600px;
 }
 
 .cardContainer {

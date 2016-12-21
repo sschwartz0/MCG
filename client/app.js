@@ -3,7 +3,7 @@
 const app = angular
   .module('myApp', [
     'ngRoute',
-    'Codesmith.HomeController', 'Codesmith.CardsController','Codesmith.ImageCardController','Codesmith.SavedController']);
+    'Codesmith.HomeController', 'Codesmith.CardsController','Codesmith.ImageCardController','Codesmith.SimpleCardController','Codesmith.HorizontalFabController']);
 
 
 app.config(configFunction);
@@ -17,11 +17,15 @@ function configFunction($routeProvider, $locationProvider) {
     })
     .when('/simpleCard', {
       templateUrl: './partials/simpleCard.html',
-      controller: 'CardsController'
+      controller: 'SimpleCardController'
     })
     .when('/imageCard', {
       templateUrl: './partials/imageCard.html',
       controller: 'ImageCardController'
+    })
+    .when('/horizontalFab', {
+      templateUrl: './partials/horizontalFab.html',
+      controller: 'HorizontalFabController'
     })
     .when('/saved', {
       templateUrl: './partials/saved.html',

@@ -6,50 +6,50 @@
   <title></title>
 
   <script type="text/javascript" src="angular/angular.min.js"></script>
+  <script type="text/javascript" src="angular-cookies/angular-cookies.min.js"></script>
   <script type="text/javascript" src="angular-route/angular-route.min.js"></script>
   <script type="text/javascript" src="./controllers/homeController.js"></script>
   <script type="text/javascript" src="./controllers/cardsController.js"></script>
   <script type="text/javascript" src="./controllers/imageCardController.js"></script>
   <script type="text/javascript" src="./controllers/savedController.js"></script>
+  <script type="text/javascript" src="./controllers/simpleCardController.js"></script>
+  <script type="text/javascript" src="./controllers/HorizontalFabController.js"></script>
   <script type="text/javascript" src="./app.js"></script>
-  <script src="bundle.js"></script>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./materialize.css">
     <link rel="stylesheet" href="./materialize.js">
 
   <link rel="stylesheet" href="./assets/material.min.css">
-  <link rel="stylesheet" href="./assets/material.min.js">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
 <body ng-app='myApp'>
+  <div class="navbar-fixed">
+    <nav class="nav-extended">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo center" style="position: relative">Material Design Component Generator</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 
- <div class="row">
-
-      <div class="col s12 m4 l3">
-
-        <div class="row">
-          <div class="col s12">
-            <h3><a href="/">MCG Home</a></h3>
-      <div class="collection" contenteditable="" ng-controller='HomeController'>
-        <a href="/simpleCard" class="collection-item active">simpleCard</a>
-        <a href="/imageCard" class="collection-item">imageCard</a>
-        <a href="/saved" ng-click="fetch()" class="collection-item">Saved Components</a>
+        <ul class="tabs tabs-transparent">
+          <li class="tab"><a href="/">My Cards</a></li>
+          <li class="tab"><a href="/imageCard">Image Card</a></li>
+          <li class="tab"><a href="/simpleCard">Simple Card</a></li>
+          <li class="tab"><a href="/horizontalFab">Horizontal Fab</a></li>
+        </ul>
       </div>
+    </nav>
+  </div>
 
-          </div>
-        </div>
+  <div id='content' style="padding:35px 20px 0px 20px" ng-view></div>
 
+  <footer class="page-footer" style="margin-top:0px;">
+    <div class="footer-copyright">
+      <div class="container">
+      Material Design Component Generator Beta
+      <a class="grey-text text-lighten-4 right" href="#!">Scott Schwartz</a>
       </div>
-
-      <div class="col s12 m8 l9">
-
-      <div id='content' ng-view></div>
-
-      </div>
-
     </div>
-
+  </footer>
 
 </body>
 </html>

@@ -1,22 +1,162 @@
-
-<form style="margin-top: 70px;">
+<!-- USER NOT LOGGED IN -->
+<form style="margin-top: 70px;" ng-show="loggedOut">
+	<div class="row center">
+		<h4>Hey you're not logged in yet! Log in or register to make and view your cards.</h4>
+	</div>
 	<div class="row">
 			<div class="input-field col s4">
-					<input id="username" type="text" placeholder='Username' ng-model='data.username'><label class="active" for='username'>username: </label>
+					<input id="username" type="text" placeholder='Username' ng-model='data.username'><label class="active" for='username'>Username: </label>
 			</div>
 			<div class="input-field col s4">
 					<input id="password" type="password" placeholder='Password' ng-model='data.password'><label class="active" for='password'>Password: </label>
 			</div>
 			<div class="col s4">
-				<form action="/login" method="post"><button type='submit' ng-click='login(data.username, data.password)' class="waves-effect waves-light btn"><i class="material-icons right">star</i>Login</a></button></form>
-				<button type='submit' ng-click='register(data.username, data.password)' class="waves-effect waves-light btn"><i class="material-icons right">save</i>Register</a></button>
+				<form action="/login" method="post"><button type='submit' ng-click='login(data.username, data.password)' class="waves-effect waves-light btn"><i class="material-icons right">lock</i>Login</a></button></form>
+				<button type='submit' ng-click='register(data.username, data.password)' class="waves-effect waves-light btn"><i class="material-icons right">account_circle</i>Register</a></button>
 			</div>
 	</div>
 </form>
+
+<!-- USER LOGGED IN -->
+<div ng-hide="loggedOut" class="center">
+	<h4>Welcome back {{data.username}}</h4>
+</div>
+	<div class="row" ng-hide="loggedOut">
+			<div class="col s4">
+					<a href="/imageCard"><button class="waves-effect waves-light btn"><i class="material-icons right">note</i>Create image card</button></a>
+			</div>
+			<div class="col s4">
+					<a href="/simpleCard"><button class="waves-effect waves-light btn"><i class="material-icons right">note</i>Create simple card</button></a>
+			</div>
+			<div class="col s4">
+					<button ng-click="logOut();redirect();" class="waves-effect waves-light btn"><i class="material-icons right">lock_open</i>Log Out</button>
+			</div>
+	</div>
 <br /><br />
-<a ng-click='fetch()'>Get cards</a>
-<ul ng-repeat="card in cards">
-  <li ng-repeat="(key, val) in card">
-    {{key}}: {{val}}
-  </li>
-</ul>
+<div class="row" ng-hide="loggedOut">
+	<div class="col s6">
+		<button ng-click='getImageCards()' class="waves-effect waves-light btn"><i class="material-icons right">get_app</i>Get Image Cards</button>
+	</div>
+	<div class="col s6">
+		<button ng-click='getSimpleCards()' class="waves-effect waves-light btn"><i class="material-icons right">get_app</i>Get Simple Cards</button>
+	</div>
+</div>
+
+<!-- IMAGE CARDS -->
+<div class="row">
+	<ul ng-repeat="card in imageCards | orderBy: '-createdAt'">
+	  <li>
+			<div class="demo-card-wide mdl-card mdl-shadow--2dp" style='width:{{card.width}}px; background-color: {{card.contentBg}};'>
+					<div class="mdl-card__title" style="color: {{card.titletextcolor}}; height: {{card.height}}px; background: url('{{card.titleImage}}') center / cover;">
+							<h2 class="mdl-card__title-text">{{card.title}}</h2>
+					</div>
+					<div class="mdl-card__supporting-text" style="color: {{card.textcolor}};">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...
+					</div>
+					<div class="mdl-card__actions mdl-card--border" style="background-color: {{card.footerBg}};">
+							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+							Get Started
+							</a>
+					</div>
+					<div class="mdl-card__menu">
+							<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" style="color: {{card.footertextcolor}};">
+							<i class="material-icons">share</i>
+							</button>
+					</div>
+			</div>
+	  </li>
+		<li>
+			<!-- TEXT AREA -->
+			<div class="code-grabber1 left">
+					<textarea rows="10" cols="20" class="text-area">
+<style>
+
+.demo-card-wide.mdl-card {
+		width: {{card.width}}px;
+		background-color: {{card.contentBg}};
+}
+
+.demo-card-wide > .mdl-card__title {
+		color: {{card.titletextcolor}};
+		height: {{card.height}}px;
+		background: url('{{card.titleImage}}') center / cover;
+}
+
+.demo-card-wide > .mdl-card__menu {
+		color: #FFFFFF;
+}
+
+.mdl-card__supporting-text {
+		color: {{card.textcolor}};
+}
+
+.mdl-card__actions {
+		background-color: {{card.footerBg}};
+}
+
+.mdl-button.mdl-button--colored {
+		color: {{card.footertextcolor}};
+}
+</style>
+
+<div class="demo-card-wide mdl-card mdl-shadow--2dp">
+		<div class="mdl-card__title">
+				<h2 class="mdl-card__title-text">{{card.title}}</h2>
+		</div>
+		<div class="mdl-card__supporting-text">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				Mauris sagittis pellentesque lacus eleifend lacinia...
+		</div>
+		<div class="mdl-card__actions mdl-card--border">
+				<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+				Get Started
+				</a>
+		</div>
+		<div class="mdl-card__menu">
+				<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+				<i class="material-icons">share</i>
+				</button>
+		</div>
+</div>
+					</textarea>
+			</div>
+		</li>
+	</ul>
+</div>
+
+<!-- SIMPLE CARDS -->
+<div class="row">
+	<ul ng-repeat="card in simpleCards">
+	  <li>
+			<div class="card" style="width: {{card.width}}px;">
+	      <div class="card-content" style="background-color: {{card.contentBg}}; color: {{card.textcolor}}">
+	        <span class="card-title" style="color:{{card.titleColor}}">{{card.title}}</span>
+	        <p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...
+	        </p>
+	      </div>
+	      <div class="card-action" style="background-color: {{card.footerBg}}; color: {{card.footerColor}}">
+	        <a href="#">This is a link</a>
+	        <a href="#">This is a link</a>
+	      </div>
+	    </div>
+	  </li>
+		<li>
+			<!-- TEXT AREA -->
+			<div class="code-grabber1">
+	          <textarea rows="10" cols="20" class="text-area">
+<div class="card" style="width: {{card.width}}px; background-color: {{card.contentBg}}; color: {{card.textcolor}}">
+  <div class="card-content">
+    <span class="card-title">{{card.title}}</span>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...</p>
+  </div>
+  <div class="card-action" style="{{card.footerBg}}">
+    <a href="#">This is a link</a>
+    <a href="#">This is a link</a>
+  </div>
+</div>
+	          </textarea>
+	    </div>
+		</li>
+	</ul>
+</div>
